@@ -14,6 +14,15 @@ return [
     'favicon'     => env('BRAND_FAVICON', 'logo.ico'),
     'whatsapp'    => env('WHATSAPP_URL', '#'),
     'show_comprobantes' => filter_var(env('SHOW_COMPROBANTES', false), FILTER_VALIDATE_BOOLEAN),
+    'show_banner'       => filter_var(env('SHOW_BANNER', true), FILTER_VALIDATE_BOOLEAN),
+    'banner'            => [
+        'image'     => env('BANNER_IMAGE', 'banner.png'),
+        'image_webp' => env('BANNER_IMAGE_WEBP', 'banner.webp'),
+        'image_sm'  => env('BANNER_IMAGE_SM', 'banner-sm.webp'),
+        'alt'       => env('BANNER_ALT', 'El Suertudo — Dinámicas y sorteos, hasta 13 oportunidades de ganar'),
+        'width'     => (int) env('BANNER_WIDTH', 941),
+        'height'    => (int) env('BANNER_HEIGHT', 1672),
+    ],
     'cdn'         => [
         'base'         => rtrim((string) env('CDN_URL', 'https://cdn-el.elsuertudo.com.co'), '/'),
         'logos'        => rtrim((string) env('CDN_LOGOS_URL', 'https://cdn-el.elsuertudo.com.co/logos'), '/'),

@@ -4,6 +4,7 @@
  */
 $brand            = e(config('brand'));
 $whatsapp         = e(config('whatsapp'));
+$showBanner       = (bool) config('show_banner', true);
 $showComprobantes = (bool) config('show_comprobantes', false);
 $comprobantes     = $showComprobantes ? ($comprobantes ?? loadJson('comprobantes.json')) : [];
 $destacado        = $comprobantes[0] ?? null;
@@ -15,6 +16,39 @@ $destacado        = $comprobantes[0] ?? null;
     </div>
 
     <div class="container">
+        <?php if ($showBanner): ?>
+        <div class="hero-layout hero-layout--banner">
+            <span class="hero-badge">
+                <i class="bi bi-geo-alt-fill me-1"></i> Colombia · Comunidad activa
+            </span>
+
+            <h1 class="hero-title">
+                Dinámicas reales.<br>Comunidad <span class="text-gradient">creciendo hoy</span>.
+            </h1>
+
+            <div class="hero-layout__banner">
+                <?php component('hero-banner'); ?>
+            </div>
+
+            <p class="hero-subtitle">
+                Únete al grupo de WhatsApp. Participaciones claras, acompañamiento cercano y dinámicas para empezar con confianza.
+            </p>
+
+            <a href="<?= $whatsapp ?>" class="btn btn-whatsapp btn-hero-cta"
+               target="_blank" rel="noopener noreferrer" data-track="hero-cta-primary">
+                <i class="bi bi-whatsapp"></i>
+                <span>
+                    <strong>Entrar al grupo ahora</strong>
+                    <small>Gratis · Respuesta inmediata</small>
+                </span>
+            </a>
+
+            <div class="hero-trust-badges">
+                <div class="trust-badge"><i class="bi bi-lightning-charge"></i> Dinámicas activas</div>
+                <div class="trust-badge"><i class="bi bi-people-fill"></i> +100 en el grupo</div>
+            </div>
+        </div>
+        <?php else: ?>
         <div class="row align-items-center hero-row g-4 g-lg-5">
             <div class="col-lg-6 hero-col-content">
                 <div class="hero-content">
@@ -86,5 +120,6 @@ $destacado        = $comprobantes[0] ?? null;
                 <?php endif; ?>
             </div>
         </div>
+        <?php endif; ?>
     </div>
 </section>

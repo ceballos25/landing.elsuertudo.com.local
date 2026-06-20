@@ -92,8 +92,12 @@ $gaId           = str_starts_with($gaId, 'G-') && !str_contains($gaId, 'XXXX') ?
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <!-- Logo LCP: WebP optimizado en CDN -->
-    <link rel="preload" as="image" href="<?= e(cdnLogo('logo-nav.webp')) ?>" type="image/webp" fetchpriority="high">
+    <!-- Banner LCP + logo navbar -->
+    <?php if (config('show_banner', true)): ?>
+    <link rel="preload" as="image" href="<?= e(cdnBanner((string) config('banner.image_sm', 'banner-sm.webp'))) ?>" type="image/webp" fetchpriority="high" media="(max-width:991px)">
+    <link rel="preload" as="image" href="<?= e(cdnBanner((string) config('banner.image_webp', 'banner.webp'))) ?>" type="image/webp" fetchpriority="high" media="(min-width:992px)">
+    <?php endif; ?>
+    <link rel="preload" as="image" href="<?= e(cdnLogo('logo-nav.webp')) ?>" type="image/webp">
 
     <!-- Iconos auto-hospedados (misma origen, caché 1 año) -->
     <link rel="preload" as="font" type="font/woff2" crossorigin
@@ -104,7 +108,7 @@ $gaId           = str_starts_with($gaId, 'G-') && !str_contains($gaId, 'XXXX') ?
     <style><?= criticalCss() ?></style>
     <style>@font-face{font-display:block;font-family:bootstrap-icons;src:url('<?= asset('assets/fonts/bootstrap-icons.woff2') ?>') format('woff2');}</style>
     <?php asyncStylesheet('https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css'); ?>
-    <?php asyncStylesheet(asset('assets/css/main.css?v=16')); ?>
+    <?php asyncStylesheet(asset('assets/css/main.css?v=21')); ?>
     <?php asyncStylesheet('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=optional'); ?>
 
     <!-- Variables de marca -->
@@ -169,6 +173,6 @@ $gaId           = str_starts_with($gaId, 'G-') && !str_contains($gaId, 'XXXX') ?
     <?php component('whatsapp-float'); ?>
 
     <!-- Custom JS (sin Bootstrap bundle — menú en vanilla) -->
-    <script src="<?= asset('assets/js/main.js?v=12') ?>" defer></script>
+    <script src="<?= asset('assets/js/main.js?v=13') ?>" defer></script>
 </body>
 </html>

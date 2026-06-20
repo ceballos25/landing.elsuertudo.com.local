@@ -133,6 +133,11 @@ function cdnLogoNav(): string
     return cdnLogo('logo-nav.webp');
 }
 
+function cdnBanner(string $filename): string
+{
+    return cdnLogo($filename);
+}
+
 function cdnComprobante(string $path): string
 {
     return cdnAsset('comprobantes', $path);

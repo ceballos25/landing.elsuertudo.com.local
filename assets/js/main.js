@@ -73,18 +73,26 @@ function initMobileViewportFix() {
 }
 
 /**
+ * Recalcula altura del header (p. ej. al abrir/cerrar menú mobile)
+ */
+function refreshNavbarHeight() {
+    const navbar = document.getElementById('mainNavbar');
+    if (!navbar) return;
+
+    const height = Math.ceil(navbar.getBoundingClientRect().height);
+    document.documentElement.style.setProperty('--navbar-height', `${height}px`);
+    document.documentElement.style.setProperty('--header-offset', `${height}px`);
+    refreshScrollOffsetCache();
+}
+
+/**
  * Calcula altura del navbar sticky para offsets de scroll
  */
 function initHeaderOffset() {
     const navbar = document.getElementById('mainNavbar');
     if (!navbar) return;
 
-    const update = () => {
-        const height = Math.ceil(navbar.getBoundingClientRect().height);
-        document.documentElement.style.setProperty('--navbar-height', `${height}px`);
-        document.documentElement.style.setProperty('--header-offset', `${height}px`);
-        refreshScrollOffsetCache();
-    };
+    const update = () => refreshNavbarHeight();
 
     update();
     window.addEventListener('resize', update, { passive: true });
@@ -159,6 +167,8 @@ function initNavbarToggle() {
     const setOpen = (open) => {
         collapse.classList.toggle('show', open);
         toggler.setAttribute('aria-expanded', open ? 'true' : 'false');
+        toggler.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
+        requestAnimationFrame(refreshNavbarHeight);
     };
 
     toggler.addEventListener('click', () => {
@@ -206,6 +216,8 @@ function initNavbarScroll() {
             if (collapse?.classList.contains('show')) {
                 collapse.classList.remove('show');
                 toggler?.setAttribute('aria-expanded', 'false');
+                toggler?.setAttribute('aria-label', 'Abrir menú');
+                requestAnimationFrame(refreshNavbarHeight);
             }
         });
     });
