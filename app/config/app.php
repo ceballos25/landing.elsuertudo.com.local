@@ -12,6 +12,7 @@ return [
     'brand'       => env('BRAND_NAME', 'El Suertudo'),
     'logo'        => env('BRAND_LOGO', 'logo.jpg'),
     'logo_nav'    => env('BRAND_LOGO_NAV', 'logo-nav.webp'),
+    'favicon'     => env('BRAND_FAVICON', 'logo.ico'),
     'whatsapp'    => env('WHATSAPP_URL', '#'),
     'show_comprobantes' => filter_var(env('SHOW_COMPROBANTES', false), FILTER_VALIDATE_BOOLEAN),
     'cdn'         => [

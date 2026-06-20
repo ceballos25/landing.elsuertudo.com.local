@@ -148,6 +148,7 @@ function imageMimeType(string $filename): string
         'webp' => 'image/webp',
         'gif'  => 'image/gif',
         'svg'  => 'image/svg+xml',
+        'ico'  => 'image/x-icon',
         default => 'image/jpeg',
     };
 }

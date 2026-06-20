@@ -16,7 +16,9 @@ $keywords       = e(config('seo.keywords'));
 $ogImageFile    = (string) config('seo.og_image', 'logo.jpg');
 $ogImage        = e(cdnLogo($ogImageFile));
 $logoNavUrl     = e(cdnLogoNav());
-$faviconUrl     = e(asset('assets/img/favicon.svg'));
+$faviconFile    = (string) config('favicon', 'logo.ico');
+$faviconUrl     = e(cdnLogo($faviconFile));
+$faviconType    = e(imageMimeType($faviconFile));
 $ogImageAlt     = e(config('seo.og_image_alt', 'El Suertudo — Comunidad oficial en Colombia'));
 $ogImageWidth   = (int) config('seo.og_image_width', 1200);
 $ogImageHeight  = (int) config('seo.og_image_height', 1200);
@@ -81,7 +83,8 @@ $gaId           = str_starts_with($gaId, 'G-') && !str_contains($gaId, 'XXXX') ?
     <?php endif; ?>
 
     <!-- Favicon e iconos -->
-    <link rel="icon" type="image/svg+xml" href="<?= $faviconUrl ?>">
+    <link rel="icon" type="<?= $faviconType ?>" href="<?= $faviconUrl ?>">
+    <link rel="shortcut icon" type="<?= $faviconType ?>" href="<?= $faviconUrl ?>">
     <link rel="apple-touch-icon" sizes="180x180" href="<?= $ogImage ?>">
 
     <!-- Preconnect / DNS prefetch -->

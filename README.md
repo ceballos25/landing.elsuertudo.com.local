@@ -81,9 +81,7 @@ websites/
     │
     ├── assets/
     │   ├── css/main.css
-    │   ├── js/main.js
-    │   └── img/
-    │       └── favicon.svg
+    │   └── js/main.js
     │
     ├── routes/
     │   └── web.php                      # Definición de rutas
