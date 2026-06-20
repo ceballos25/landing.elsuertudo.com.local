@@ -43,7 +43,7 @@ $whatsapp     = e(config('whatsapp'));
             </div>
             <div class="comprobantes-fade comprobantes-fade-right" aria-hidden="true"></div>
         </div>
-        <div class="comprobantes-dots d-lg-none" aria-label="Navegación de comprobantes"></div>
+        <nav class="comprobantes-dots d-lg-none" aria-label="Navegación de comprobantes"></nav>
         <p class="comprobantes-hint d-lg-none text-center">
             <i class="bi bi-arrow-left-right"></i> Desliza para ver más
         </p>

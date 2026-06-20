@@ -92,18 +92,16 @@ $gaId           = str_starts_with($gaId, 'G-') && !str_contains($gaId, 'XXXX') ?
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <!-- Iconos: reservar espacio antes de cargar la fuente (reduce CLS) -->
+    <!-- Iconos: carga síncrona above-the-fold (evita CLS en hero) -->
     <link rel="preload" as="font" type="font/woff2" crossorigin
-          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/fonts/bootstrap-icons.woff2">
+          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/fonts/bootstrap-icons.woff2?dd67030699838ea613ee6dbda90effa6">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
-    <!-- CSS crítico inline + hojas completas sin bloquear render -->
+    <!-- CSS crítico inline + hojas completas -->
     <style><?= criticalCss() ?></style>
     <?php asyncStylesheet('https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css'); ?>
-    <?php asyncStylesheet(asset('assets/css/main.css?v=14')); ?>
-
-    <!-- Fuentes e iconos (no críticos) -->
+    <link rel="stylesheet" href="<?= asset('assets/css/main.css?v=15') ?>">
     <?php asyncStylesheet('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=optional'); ?>
-    <?php asyncStylesheet('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css'); ?>
 
     <!-- Variables de marca -->
     <style>

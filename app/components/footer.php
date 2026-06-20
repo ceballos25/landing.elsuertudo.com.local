@@ -16,9 +16,7 @@ $year    = date('Y');
     <div class="container">
         <div class="row g-4 footer-main">
             <div class="col-lg-4">
-                <div class="mb-3">
-                    <?php component('brand-logo', ['size' => 'sm']); ?>
-                </div>
+                <p class="footer-brand-name"><?= $brand ?></p>
                 <p class="footer-description">
                     Tu suerte se construye en comunidad. Dinámicas claras, grupo activo
                     y la energía de El Suertudo desde Colombia.

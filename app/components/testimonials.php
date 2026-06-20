@@ -21,11 +21,11 @@ $testimonials = $testimonials ?? [];
                     <?php foreach ($testimonials as $testimonial): ?>
                     <li class="testimonial-slide">
                         <blockquote class="testimonial-card testimonial-card-compact">
-                            <div class="testimonial-rating" aria-label="<?= (int) ($testimonial['rating'] ?? 5) ?> de 5 estrellas">
+                            <span class="testimonial-rating" role="img" aria-label="<?= (int) ($testimonial['rating'] ?? 5) ?> de 5 estrellas">
                                 <?php for ($i = 0; $i < (int) ($testimonial['rating'] ?? 5); $i++): ?>
                                 <i class="bi bi-star-fill" aria-hidden="true"></i>
                                 <?php endfor; ?>
-                            </div>
+                            </span>
                             <p class="testimonial-text">"<?= e($testimonial['text'] ?? '') ?>"</p>
                             <footer class="testimonial-author">
                                 <div>
@@ -40,7 +40,7 @@ $testimonials = $testimonials ?? [];
             </div>
             <div class="testimonials-fade testimonials-fade-right" aria-hidden="true"></div>
         </div>
-        <div class="testimonials-dots" aria-label="Navegación de testimonios"></div>
+        <nav class="testimonials-dots" aria-label="Navegación de testimonios"></nav>
         <p class="testimonials-hint text-center">
             <i class="bi bi-arrow-left-right" aria-hidden="true"></i> Desliza para ver más opiniones
         </p>
