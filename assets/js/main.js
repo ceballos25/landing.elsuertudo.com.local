@@ -10,6 +10,7 @@ const SCROLL_EXTRA_OFFSET = 16;
 document.addEventListener('DOMContentLoaded', () => {
     document.documentElement.classList.add('js-ready');
     initHeaderOffset();
+    initNavbarToggle();
     initNavbarScroll();
     initSmoothScroll();
     initScrollSpy();
@@ -123,6 +124,39 @@ function scrollToElement(target, { updateHash = true } = {}) {
 }
 
 /**
+ * Menú mobile sin Bootstrap JS (~80 KB menos)
+ */
+function initNavbarToggle() {
+    const navbar = document.getElementById('mainNavbar');
+    if (!navbar) return;
+
+    const toggler = navbar.querySelector('[data-nav-toggle]');
+    const collapse = navbar.querySelector('.navbar-collapse');
+    if (!toggler || !collapse) return;
+
+    const setOpen = (open) => {
+        collapse.classList.toggle('show', open);
+        toggler.setAttribute('aria-expanded', open ? 'true' : 'false');
+    };
+
+    toggler.addEventListener('click', () => {
+        setOpen(!collapse.classList.contains('show'));
+    });
+
+    document.addEventListener('click', (event) => {
+        if (!collapse.classList.contains('show')) return;
+        if (navbar.contains(event.target)) return;
+        setOpen(false);
+    });
+
+    window.addEventListener('resize', () => {
+        if (window.innerWidth >= 992) {
+            setOpen(false);
+        }
+    }, { passive: true });
+}
+
+/**
  * Navbar: sombra al scroll + cerrar menú mobile
  */
 function initNavbarScroll() {
@@ -146,9 +180,10 @@ function initNavbarScroll() {
     navbar.querySelectorAll('.nav-link[href^="#"]').forEach(link => {
         link.addEventListener('click', () => {
             const collapse = navbar.querySelector('.navbar-collapse');
+            const toggler = navbar.querySelector('[data-nav-toggle]');
             if (collapse?.classList.contains('show')) {
-                const toggler = navbar.querySelector('.navbar-toggler');
-                toggler?.click();
+                collapse.classList.remove('show');
+                toggler?.setAttribute('aria-expanded', 'false');
             }
         });
     });

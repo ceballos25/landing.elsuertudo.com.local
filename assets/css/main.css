@@ -144,6 +144,17 @@ body {
     text-rendering: optimizeLegibility;
 }
 
+/* Menú mobile sin Bootstrap JS */
+@media (max-width: 991.98px) {
+    #mainNavbar .navbar-collapse {
+        display: none;
+    }
+
+    #mainNavbar .navbar-collapse.show {
+        display: block;
+    }
+}
+
 [id] {
     scroll-margin-top: calc(var(--header-offset) + 16px);
 }
@@ -1723,6 +1734,13 @@ a {
     .whatsapp-float {
         bottom: calc(84px + env(safe-area-inset-bottom));
     }
+
+    .btn-hero-cta,
+    .btn-cta-large,
+    .mobile-cta-btn,
+    .whatsapp-float {
+        animation: none;
+    }
 }
 
 @media (max-width: 575.98px) {
@@ -1818,5 +1836,12 @@ a {
     [data-animate] {
         opacity: 1;
         transform: none;
+    }
+
+    .btn-hero-cta,
+    .btn-cta-large,
+    .mobile-cta-btn,
+    .whatsapp-float {
+        animation: none !important;
     }
 }

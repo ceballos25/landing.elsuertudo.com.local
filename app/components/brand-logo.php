@@ -18,5 +18,6 @@ if ($asNav) {
 }
 ?>
 <a href="#inicio" class="<?= $classes ?>" aria-label="<?= $brand ?> — Inicio">
-    <img src="<?= $logo ?>" alt="<?= $brand ?>" loading="eager">
+    <img src="<?= $logo ?>" alt="<?= $brand ?>" width="160" height="58"
+         fetchpriority="high" decoding="async" loading="eager">
 </a>

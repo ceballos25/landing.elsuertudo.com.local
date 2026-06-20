@@ -8,9 +8,9 @@ $whatsapp = e(config('whatsapp'));
         <div class="container">
             <?php component('brand-logo', ['size' => 'md', 'asNav' => true]); ?>
 
-            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarContent" aria-controls="navbarContent"
-                    aria-expanded="false" aria-label="Abrir menú">
+            <button class="navbar-toggler border-0" type="button"
+                    aria-controls="navbarContent" aria-expanded="false"
+                    aria-label="Abrir menú" data-nav-toggle>
                 <span class="navbar-toggler-icon"></span>
             </button>
 

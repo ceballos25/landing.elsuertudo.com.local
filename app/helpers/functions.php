@@ -148,6 +148,16 @@ function imageMimeType(string $filename): string
 }
 
 /**
+ * Imprime un stylesheet de forma no bloqueante con fallback noscript
+ */
+function asyncStylesheet(string $href): void
+{
+    $href = e($href);
+    echo '<link rel="preload" as="style" href="' . $href . '" onload="this.onload=null;this.rel=\'stylesheet\'">' . "\n";
+    echo '<noscript><link rel="stylesheet" href="' . $href . '"></noscript>' . "\n";
+}
+
+/**
  * Incluye un componente reutilizable
  */
 function component(string $name, array $data = []): void
