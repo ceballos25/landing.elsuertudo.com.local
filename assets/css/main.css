@@ -128,6 +128,8 @@
 html {
     scroll-behavior: smooth;
     scroll-padding-top: calc(var(--header-offset) + 16px);
+    overflow-x: clip;
+    max-width: 100%;
 }
 
 body {
@@ -138,7 +140,8 @@ body {
     background-color: var(--color-white);
     -webkit-font-smoothing: antialiased;
     -webkit-tap-highlight-color: transparent;
-    overflow-x: hidden;
+    overflow-x: clip;
+    max-width: 100%;
     padding-top: 0;
     padding-bottom: 0;
     text-rendering: optimizeLegibility;
@@ -332,7 +335,7 @@ a {
     position: relative;
     background: var(--gradient-hero);
     color: var(--color-text);
-    overflow: visible;
+    overflow: hidden;
     padding: 2.5rem 0 3.5rem;
 }
 
@@ -1620,11 +1623,12 @@ a {
     }
 
     .testimonials-carousel {
-        margin-inline: calc(-1 * max(1rem, env(safe-area-inset-left)));
+        margin-inline: calc(-1 * max(1rem, env(safe-area-inset-left))) calc(-1 * max(1rem, env(safe-area-inset-right)));
+        width: auto;
     }
 
     .testimonials-scroll {
-        padding-inline: max(1rem, env(safe-area-inset-left));
+        padding-inline: max(1rem, env(safe-area-inset-left)) max(1rem, env(safe-area-inset-right));
         scroll-padding-inline: max(1rem, env(safe-area-inset-left));
     }
 
@@ -1867,7 +1871,7 @@ a {
     }
 
     .testimonial-slide {
-        flex-basis: min(92vw, 320px);
+        flex-basis: min(calc(100vw - 2rem), 320px);
     }
 
     .whatsapp-float {

@@ -130,7 +130,7 @@ function cdnLogo(string $path): string
 
 function cdnLogoNav(): string
 {
-    return cdnLogo((string) config('logo_nav', 'logo-nav.webp'));
+    return cdnLogo((string) config('logo_nav', 'logo.jpg'));
 }
 
 function cdnComprobante(string $path): string
