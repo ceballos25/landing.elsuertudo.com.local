@@ -1420,12 +1420,12 @@ a {
     color: var(--color-muted);
 }
 
-.footer-brand-name {
-    font-size: 1.35rem;
-    font-weight: 800;
-    color: var(--color-primary);
+.footer-brand {
     margin: 0 0 1rem;
-    letter-spacing: -0.02em;
+}
+
+.footer-brand .brand-logo {
+    display: inline-flex;
 }
 
 .footer-heading {
