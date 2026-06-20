@@ -25,40 +25,48 @@ $year    = date('Y');
                 </p>
             </div>
 
-            <div class="col-6 col-lg-2">
-                <h2 class="footer-heading">Navegación</h2>
-                <ul class="footer-links">
-                    <li><a href="#inicio">Inicio</a></li>
-                    <li><a href="#como-funciona">Cómo funciona</a></li>
-                    <li><a href="#testimonios">Opiniones</a></li>
-                </ul>
+            <div class="col-12 col-lg-5">
+                <div class="footer-nav-grid">
+                    <nav class="footer-block" aria-label="Enlaces del sitio">
+                        <h2 class="footer-heading">Navegación</h2>
+                        <ul class="footer-links">
+                            <li><a href="#inicio">Inicio</a></li>
+                            <li><a href="#como-funciona">Cómo funciona</a></li>
+                            <li><a href="#testimonios">Opiniones</a></li>
+                        </ul>
+                    </nav>
+
+                    <div class="footer-block">
+                        <h2 class="footer-heading">Contacto</h2>
+                        <ul class="footer-contact">
+                            <li>
+                                <a href="tel:+<?= e($phoneTel) ?>">
+                                    <i class="bi bi-telephone" aria-hidden="true"></i>
+                                    <span><?= $phone ?></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="mailto:<?= $email ?>">
+                                    <i class="bi bi-envelope" aria-hidden="true"></i>
+                                    <span><?= $email ?></span>
+                                </a>
+                            </li>
+                            <li>
+                                <i class="bi bi-geo-alt" aria-hidden="true"></i>
+                                <span><?= $country ?></span>
+                            </li>
+                            <li>
+                                <a href="<?= e(config('whatsapp')) ?>" target="_blank" rel="noopener noreferrer">
+                                    <i class="bi bi-whatsapp" aria-hidden="true"></i>
+                                    <span>WhatsApp</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
 
-            <div class="col-6 col-lg-3">
-                <h2 class="footer-heading">Contacto</h2>
-                <ul class="footer-contact">
-                    <li>
-                        <a href="tel:+<?= e($phoneTel) ?>">
-                            <i class="bi bi-telephone"></i> <?= $phone ?>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="mailto:<?= $email ?>">
-                            <i class="bi bi-envelope"></i> <?= $email ?>
-                        </a>
-                    </li>
-                    <li>
-                        <i class="bi bi-geo-alt"></i> <?= $country ?>
-                    </li>
-                    <li>
-                        <a href="<?= e(config('whatsapp')) ?>" target="_blank" rel="noopener noreferrer">
-                            <i class="bi bi-whatsapp"></i> WhatsApp
-                        </a>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="col-lg-3">
+            <div class="col-12 col-lg-3">
                 <h2 class="footer-heading">Síguenos</h2>
                 <div class="footer-social">
                     <?php if (!empty($social['facebook']) && $social['facebook'] !== '#' && $social['facebook'] !== ''): ?>

@@ -108,7 +108,7 @@ $gaId           = str_starts_with($gaId, 'G-') && !str_contains($gaId, 'XXXX') ?
     <style><?= criticalCss() ?></style>
     <style>@font-face{font-display:block;font-family:bootstrap-icons;src:url('<?= asset('assets/fonts/bootstrap-icons.woff2') ?>') format('woff2');}</style>
     <?php asyncStylesheet('https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css'); ?>
-    <?php asyncStylesheet(asset('assets/css/main.css?v=24')); ?>
+    <?php asyncStylesheet(asset('assets/css/main.css?v=26')); ?>
     <?php asyncStylesheet('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=optional'); ?>
 
     <!-- Variables de marca -->

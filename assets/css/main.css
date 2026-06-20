@@ -1453,13 +1453,24 @@ a {
     display: inline-flex;
 }
 
+.footer-nav-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.35fr);
+    gap: 2rem 1.75rem;
+    text-align: left;
+}
+
+.footer-block {
+    min-width: 0;
+}
+
 .footer-heading {
     font-size: 0.85rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.06em;
     color: var(--color-primary);
-    margin-bottom: 1.25rem;
+    margin: 0 0 1rem;
 }
 
 .footer-links,
@@ -1470,13 +1481,51 @@ a {
 }
 
 .footer-links li,
-.footer-contact li { margin-bottom: 0.6rem; }
-
-.footer-links a,
-.footer-contact a,
 .footer-contact li {
+    margin-bottom: 0.55rem;
+}
+
+.footer-links li:last-child,
+.footer-contact li:last-child {
+    margin-bottom: 0;
+}
+
+.footer-links a {
+    display: inline-block;
     color: var(--color-muted);
     font-size: 0.9rem;
+    line-height: 1.5;
+    padding: 0.15rem 0;
+    transition: color var(--transition);
+}
+
+.footer-contact li,
+.footer-contact a {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.55rem;
+    color: var(--color-muted);
+    font-size: 0.9rem;
+    line-height: 1.45;
+    text-align: left;
+}
+
+.footer-contact a {
+    padding: 0.15rem 0;
+    transition: color var(--transition);
+}
+
+.footer-contact i {
+    flex-shrink: 0;
+    width: 1.05rem;
+    margin-top: 0.15rem;
+    color: var(--color-primary);
+    text-align: center;
+}
+
+.footer-contact span {
+    min-width: 0;
+    word-break: break-word;
 }
 
 .footer-links a:hover,
@@ -1660,6 +1709,39 @@ a {
 
 /* --- Responsive --- */
 @media (min-width: 992px) {
+    .footer-nav-grid {
+        gap: 2.5rem 2rem;
+        text-align: left;
+    }
+
+    .footer-block {
+        text-align: left;
+    }
+
+    .footer-heading {
+        text-align: left;
+    }
+
+    .footer-links {
+        display: block;
+        align-items: stretch;
+    }
+
+    .footer-contact li,
+    .footer-contact a {
+        justify-content: flex-start;
+        text-align: left;
+    }
+
+    .footer-main .col-lg-4,
+    .footer-main .col-lg-3 {
+        text-align: left;
+    }
+
+    .footer-social {
+        justify-content: flex-start;
+    }
+
     .hero-layout--banner {
         display: grid;
         grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
@@ -1976,7 +2058,37 @@ a {
     }
 
     .footer-description,
-    .footer-main .col-lg-4,
+    .footer-main .col-lg-4 {
+        text-align: center;
+    }
+
+    .footer-nav-grid {
+        max-width: 420px;
+        margin-inline: auto;
+        gap: 1.75rem 1.25rem;
+        text-align: center;
+    }
+
+    .footer-block {
+        text-align: center;
+    }
+
+    .footer-heading {
+        text-align: center;
+    }
+
+    .footer-links {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-contact li,
+    .footer-contact a {
+        justify-content: center;
+        text-align: center;
+    }
+
     .footer-main .col-lg-3 {
         text-align: center;
     }
@@ -1988,11 +2100,6 @@ a {
 
     .footer-social {
         justify-content: center;
-    }
-
-    .footer-links,
-    .footer-contact {
-        margin-bottom: 0.5rem;
     }
 
     .comprobantes-carousel {
@@ -2176,6 +2283,12 @@ a {
     .whatsapp-float-tooltip { display: none; }
 
     .promo-bar-text { font-size: 0.76rem; }
+
+    .footer-nav-grid {
+        grid-template-columns: 1fr;
+        max-width: 280px;
+        gap: 1.5rem;
+    }
 }
 
 @media (hover: none) and (pointer: coarse) {
