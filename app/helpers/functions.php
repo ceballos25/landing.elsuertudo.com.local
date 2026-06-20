@@ -133,6 +133,30 @@ function cdnLogoNav(): string
     return cdnLogo((string) config('logo_nav', 'logo.jpg'));
 }
 
+/**
+ * Logo optimizado local para navbar (WebP ~13 KiB vs logo.jpg ~248 KiB en CDN)
+ */
+function hasLocalLogoNav(): bool
+{
+    static $exists = null;
+
+    if ($exists === null) {
+        $exists = is_readable(dirname(__DIR__, 2) . '/assets/img/logo-nav.webp');
+    }
+
+    return $exists;
+}
+
+function logoNavWebpUrl(string $variant = 'logo-nav'): string
+{
+    return asset("assets/img/{$variant}.webp");
+}
+
+function logoNavJpgUrl(string $variant = 'logo-nav'): string
+{
+    return asset("assets/img/{$variant}.jpg");
+}
+
 function cdnComprobante(string $path): string
 {
     return cdnAsset('comprobantes', $path);

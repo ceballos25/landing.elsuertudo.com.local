@@ -92,15 +92,21 @@ $gaId           = str_starts_with($gaId, 'G-') && !str_contains($gaId, 'XXXX') ?
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <!-- Iconos: carga síncrona above-the-fold (evita CLS en hero) -->
+    <!-- Logo LCP: versión local optimizada (~13 KiB) -->
+    <?php if (hasLocalLogoNav()): ?>
+    <link rel="preload" as="image" href="<?= e(logoNavWebpUrl()) ?>" type="image/webp" fetchpriority="high">
+    <?php endif; ?>
+
+    <!-- Iconos auto-hospedados (misma origen, caché 1 año) -->
     <link rel="preload" as="font" type="font/woff2" crossorigin
-          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/fonts/bootstrap-icons.woff2?dd67030699838ea613ee6dbda90effa6">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+          href="<?= asset('assets/fonts/bootstrap-icons.woff2') ?>">
+    <?php asyncStylesheet(asset('assets/css/bootstrap-icons.min.css?v=1')); ?>
 
     <!-- CSS crítico inline + hojas completas -->
     <style><?= criticalCss() ?></style>
+    <style>@font-face{font-display:block;font-family:bootstrap-icons;src:url('<?= asset('assets/fonts/bootstrap-icons.woff2') ?>') format('woff2');}</style>
     <?php asyncStylesheet('https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css'); ?>
-    <link rel="stylesheet" href="<?= asset('assets/css/main.css?v=15') ?>">
+    <?php asyncStylesheet(asset('assets/css/main.css?v=16')); ?>
     <?php asyncStylesheet('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=optional'); ?>
 
     <!-- Variables de marca -->
@@ -165,6 +171,6 @@ $gaId           = str_starts_with($gaId, 'G-') && !str_contains($gaId, 'XXXX') ?
     <?php component('whatsapp-float'); ?>
 
     <!-- Custom JS (sin Bootstrap bundle — menú en vanilla) -->
-    <script src="<?= asset('assets/js/main.js?v=11') ?>" defer></script>
+    <script src="<?= asset('assets/js/main.js?v=12') ?>" defer></script>
 </body>
 </html>

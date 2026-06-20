@@ -10,34 +10,49 @@ let scrollOffsetCache = 88;
 
 document.addEventListener('DOMContentLoaded', () => {
     document.documentElement.classList.add('js-ready');
-    initHeaderOffset();
     initNavbarToggle();
-    initNavbarScroll();
     initSmoothScroll();
-    initScrollSpy();
-    initScrollProgress();
-    initHorizontalCarousel({
-        carouselSelector: '.comprobantes-carousel',
-        scrollSelector: '.comprobantes-scroll',
-        slideSelector: '.comprobante-slide',
-        dotsSelector: '.comprobantes-dots',
-        dotClass: 'comprobantes-dot',
-        labelPrefix: 'Comprobante',
-    });
-    initHorizontalCarousel({
-        carouselSelector: '.testimonials-carousel',
-        scrollSelector: '.testimonials-scroll',
-        slideSelector: '.testimonial-slide',
-        dotsSelector: '.testimonials-dots',
-        dotClass: 'testimonials-dot',
-        labelPrefix: 'Testimonio',
-    });
-    initScrollAnimations();
-    initLazyLoading();
-    initCTATracking();
     initHashOnLoad();
-    initMobileViewportFix();
+
+    requestAnimationFrame(() => {
+        initHeaderOffset();
+        initNavbarScroll();
+        initScrollSpy();
+        initScrollProgress();
+        initMobileViewportFix();
+    });
+
+    scheduleIdle(() => {
+        initHorizontalCarousel({
+            carouselSelector: '.comprobantes-carousel',
+            scrollSelector: '.comprobantes-scroll',
+            slideSelector: '.comprobante-slide',
+            dotsSelector: '.comprobantes-dots',
+            dotClass: 'comprobantes-dot',
+            labelPrefix: 'Comprobante',
+        });
+        initHorizontalCarousel({
+            carouselSelector: '.testimonials-carousel',
+            scrollSelector: '.testimonials-scroll',
+            slideSelector: '.testimonial-slide',
+            dotsSelector: '.testimonials-dots',
+            dotClass: 'testimonials-dot',
+            labelPrefix: 'Testimonio',
+        });
+        initScrollAnimations();
+        initLazyLoading();
+        initCTATracking();
+    });
 });
+
+function scheduleIdle(callback) {
+    if (typeof requestIdleCallback === 'function') {
+        requestIdleCallback(callback, { timeout: 2000 });
+        return;
+    }
+
+    setTimeout(callback, 1);
+}
 
 /**
  * Corrige 100vh en móvil (barra del navegador) y recalcula header
