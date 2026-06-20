@@ -15,7 +15,7 @@ $whatsapp     = e(config('whatsapp'));
         </div>
 
         <?php if (!empty($comprobantes)): ?>
-        <div class="comprobantes-carousel" role="region" aria-roledescription="carrusel" aria-label="Comprobantes verificados">
+        <div class="comprobantes-carousel">
             <div class="comprobantes-fade comprobantes-fade-left" aria-hidden="true"></div>
             <div class="comprobantes-scroll">
                 <ul class="comprobantes-track">

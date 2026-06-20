@@ -330,14 +330,12 @@ function initHorizontalCarousel({
     container.setAttribute('aria-label', `${labelPrefix}s — desliza horizontalmente`);
 
     if (dotsWrap && slides.length > 1) {
-        dotsWrap.setAttribute('role', 'group');
-
         slides.forEach((_, index) => {
             const dot = document.createElement('button');
             dot.type = 'button';
             dot.className = `${dotClass}${index === 0 ? ' is-active' : ''}`;
             dot.setAttribute('aria-label', `${labelPrefix} ${index + 1} de ${slides.length}`);
-            dot.setAttribute('aria-current', index === 0 ? 'true' : 'false');
+            dot.setAttribute('aria-pressed', index === 0 ? 'true' : 'false');
 
             dot.addEventListener('click', () => {
                 slides[index].scrollIntoView({
@@ -378,7 +376,7 @@ function initHorizontalCarousel({
             dotsWrap.querySelectorAll(`.${dotClass}`).forEach((dot, index) => {
                 const isActive = index === activeIndex;
                 dot.classList.toggle('is-active', isActive);
-                dot.setAttribute('aria-current', isActive ? 'true' : 'false');
+                dot.setAttribute('aria-pressed', isActive ? 'true' : 'false');
             });
         }
 

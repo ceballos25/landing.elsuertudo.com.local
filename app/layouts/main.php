@@ -15,7 +15,6 @@ $description    = e(config('seo.description'));
 $keywords       = e(config('seo.keywords'));
 $ogImageFile    = (string) config('seo.og_image', 'logo.jpg');
 $ogImage        = e(cdnLogo($ogImageFile));
-$logoNavUrl     = e(cdnLogoNav());
 $faviconFile    = (string) config('favicon', 'logo.ico');
 $faviconUrl     = e(cdnLogo($faviconFile));
 $faviconType    = e(imageMimeType($faviconFile));
@@ -93,15 +92,17 @@ $gaId           = str_starts_with($gaId, 'G-') && !str_contains($gaId, 'XXXX') ?
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <!-- LCP: logo del navbar -->
-    <link rel="preload" as="image" href="<?= $logoNavUrl ?>" fetchpriority="high">
+    <!-- Iconos: reservar espacio antes de cargar la fuente (reduce CLS) -->
+    <link rel="preload" as="font" type="font/woff2" crossorigin
+          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/fonts/bootstrap-icons.woff2">
 
-    <!-- CSS crítico de layout (Bootstrap grid + componentes) -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="<?= asset('assets/css/main.css?v=13') ?>">
+    <!-- CSS crítico inline + hojas completas sin bloquear render -->
+    <style><?= criticalCss() ?></style>
+    <?php asyncStylesheet('https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css'); ?>
+    <?php asyncStylesheet(asset('assets/css/main.css?v=14')); ?>
 
-    <!-- CSS no crítico (no bloquea el primer render) -->
-    <?php asyncStylesheet('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap'); ?>
+    <!-- Fuentes e iconos (no críticos) -->
+    <?php asyncStylesheet('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=optional'); ?>
     <?php asyncStylesheet('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css'); ?>
 
     <!-- Variables de marca -->
@@ -166,6 +167,6 @@ $gaId           = str_starts_with($gaId, 'G-') && !str_contains($gaId, 'XXXX') ?
     <?php component('whatsapp-float'); ?>
 
     <!-- Custom JS (sin Bootstrap bundle — menú en vanilla) -->
-    <script src="<?= asset('assets/js/main.js?v=10') ?>" defer></script>
+    <script src="<?= asset('assets/js/main.js?v=11') ?>" defer></script>
 </body>
 </html>

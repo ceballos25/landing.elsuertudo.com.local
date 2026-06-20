@@ -14,7 +14,7 @@ $testimonials = $testimonials ?? [];
         </div>
 
         <?php if (!empty($testimonials)): ?>
-        <div class="testimonials-carousel" role="region" aria-roledescription="carrusel" aria-label="Opiniones de la comunidad">
+        <div class="testimonials-carousel">
             <div class="testimonials-fade testimonials-fade-left" aria-hidden="true"></div>
             <div class="testimonials-scroll">
                 <ul class="testimonials-track">

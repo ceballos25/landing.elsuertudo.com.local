@@ -14,7 +14,7 @@
     --color-gold-light: #F2E205;
     --color-dark: #014005;
     --color-text: #1A2E1A;
-    --color-muted: #3D523D;
+    --color-muted: #2F462F;
     --color-white: #FFFFFF;
     --color-surface: #FFFFFF;
     --color-surface-alt: #F5FFF6;
@@ -59,6 +59,7 @@
     font-weight: 600;
     flex-shrink: 0;
     padding-top: env(safe-area-inset-top, 0px);
+    min-height: 44px;
 }
 
 .scroll-progress {
@@ -168,6 +169,17 @@ body {
 
 img { max-width: 100%; height: auto; display: block; }
 
+.bi,
+[class^="bi-"],
+[class*=" bi-"] {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    line-height: 1;
+    vertical-align: -0.125em;
+    font-style: normal;
+}
+
 a {
     text-decoration: none;
     transition: color var(--transition), opacity var(--transition);
@@ -239,9 +251,10 @@ a {
 
 .brand-logo img {
     height: 58px;
-    width: auto;
+    width: 160px;
     max-width: 160px;
     object-fit: contain;
+    aspect-ratio: 160 / 58;
 }
 
 .brand-logo-sm img { height: 46px; max-width: 130px; }
@@ -362,7 +375,7 @@ a {
 }
 
 .btn-hero-cta strong { font-size: 1.1rem; }
-.btn-hero-cta small { font-size: 0.78rem; opacity: 0.9; font-weight: 400; }
+.btn-hero-cta small { font-size: 0.78rem; opacity: 1; font-weight: 400; color: rgba(255, 255, 255, 0.95); }
 
 .hero-proof-card {
     background: var(--color-white);
@@ -487,8 +500,8 @@ a {
     display: inline-flex;
     align-items: center;
     background: rgba(var(--color-primary-rgb), 0.08);
-    border: 1px solid rgba(var(--color-primary-rgb), 0.16);
-    color: var(--color-trust);
+    border: 1px solid rgba(var(--color-primary-rgb), 0.2);
+    color: var(--color-primary);
     font-size: 0.85rem;
     font-weight: 600;
     padding: 0.5rem 1rem;
@@ -1252,7 +1265,7 @@ a {
 }
 
 .btn-cta-large strong { font-size: 1.15rem; }
-.btn-cta-large small { font-size: 0.8rem; opacity: 0.85; font-weight: 400; }
+.btn-cta-large small { font-size: 0.8rem; opacity: 1; font-weight: 400; color: rgba(255, 255, 255, 0.95); }
 
 .btn-hero-cta::after,
 .btn-cta-large::after,
@@ -1262,7 +1275,7 @@ a {
     position: absolute;
     inset: 0;
     border-radius: inherit;
-    border: 2px solid rgba(37, 211, 102, 0.45);
+    background: rgba(37, 211, 102, 0.25);
     animation: pulse-ring 2.5s ease-out infinite;
     pointer-events: none;
     will-change: transform, opacity;
@@ -1523,6 +1536,11 @@ a {
 }
 
 @media (max-width: 991.98px) {
+    .hero-orb-1,
+    .hero-orb-2 {
+        animation: none;
+    }
+
     .container {
         padding-left: max(1rem, env(safe-area-inset-left));
         padding-right: max(1rem, env(safe-area-inset-right));
@@ -1858,7 +1876,9 @@ a {
 
     .brand-logo img {
         height: 50px;
+        width: 140px;
         max-width: 140px;
+        aspect-ratio: 140 / 50;
     }
 
     .section-title {

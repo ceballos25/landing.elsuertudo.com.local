@@ -164,6 +164,21 @@ function asyncStylesheet(string $href): void
 }
 
 /**
+ * CSS crítico above-the-fold (inline, no bloquea red)
+ */
+function criticalCss(): string
+{
+    static $css = null;
+
+    if ($css === null) {
+        $path = dirname(__DIR__, 2) . '/assets/css/critical.css';
+        $css  = (is_readable($path)) ? (string) file_get_contents($path) : '';
+    }
+
+    return $css;
+}
+
+/**
  * Incluye un componente reutilizable
  */
 function component(string $name, array $data = []): void
