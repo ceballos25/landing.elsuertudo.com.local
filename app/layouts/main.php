@@ -92,10 +92,8 @@ $gaId           = str_starts_with($gaId, 'G-') && !str_contains($gaId, 'XXXX') ?
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <!-- Logo LCP: versión local optimizada (~13 KiB) -->
-    <?php if (hasLocalLogoNav()): ?>
-    <link rel="preload" as="image" href="<?= e(logoNavWebpUrl()) ?>" type="image/webp" fetchpriority="high">
-    <?php endif; ?>
+    <!-- Logo LCP: WebP optimizado en CDN -->
+    <link rel="preload" as="image" href="<?= e(cdnLogo('logo-nav.webp')) ?>" type="image/webp" fetchpriority="high">
 
     <!-- Iconos auto-hospedados (misma origen, caché 1 año) -->
     <link rel="preload" as="font" type="font/woff2" crossorigin
