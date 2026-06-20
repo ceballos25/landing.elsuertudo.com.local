@@ -1,0 +1,50 @@
+[
+    {
+        "name": "Laura Cortés",
+        "city": "Medellín, Ant.",
+        "date": "2026-05-29",
+        "activity": "Dinámica matutina"
+    },
+    {
+        "name": "Henry Carrillo",
+        "city": "Bogotá, D.C.",
+        "date": "2026-05-24",
+        "activity": "Participación express"
+    },
+    {
+        "name": "Fabio Gómez",
+        "city": "Cali, Valle",
+        "date": "2026-05-23",
+        "activity": "Experiencia vespertina"
+    },
+    {
+        "name": "Luz Goez",
+        "city": "Barranquilla, Atl.",
+        "date": "2026-05-19",
+        "activity": "Actividad especial"
+    },
+    {
+        "name": "Antonio Martínez",
+        "city": "Cartagena, Bol.",
+        "date": "2026-05-16",
+        "activity": "Dinámica nocturna"
+    },
+    {
+        "name": "Migdonia García",
+        "city": "Bucaramanga, Sant.",
+        "date": "2026-05-14",
+        "activity": "Participación activa"
+    },
+    {
+        "name": "Juan Granadillo",
+        "city": "Pereira, Ris.",
+        "date": "2026-05-31",
+        "activity": "Dinámica matutina"
+    },
+    {
+        "name": "Cindy Pérez",
+        "city": "Manizales, Cald.",
+        "date": "2026-06-05",
+        "activity": "Experiencia comunitaria"
+    }
+]

@@ -1,0 +1,50 @@
+[
+    {
+        "name": "Daniela Patricia Henao",
+        "city": "Manizales",
+        "text": "Llevo pocas semanas en el grupo y me gusta la energía. Explican todo con paciencia y se siente un ambiente familiar.",
+        "rating": 5
+    },
+    {
+        "name": "Sebastián Morales",
+        "city": "Bogotá",
+        "text": "Un amigo me pasó el enlace y entré sin expectativas. Hoy ya participo seguido — la dinámica es sencilla y transparente.",
+        "rating": 5
+    },
+    {
+        "name": "Yenifer Alejandra Ríos",
+        "city": "Ibagué",
+        "text": "Ideal si estás empezando. Te orientan paso a paso y siempre hay alguien en el grupo que responde rápido.",
+        "rating": 5
+    },
+    {
+        "name": "Andrés Felipe Restrepo",
+        "city": "Bucaramanga",
+        "text": "Me gustó que no hay enredos. Entras, lees las instrucciones y participas. Para mí eso fue lo que más confianza me dio.",
+        "rating": 5
+    },
+    {
+        "name": "Laura Sofía Muñoz",
+        "city": "Pereira",
+        "text": "Vi la landing, entré al WhatsApp y en minutos ya entendí cómo funciona todo. Muy claro desde el primer mensaje.",
+        "rating": 5
+    },
+    {
+        "name": "Ricardo Esteban Vargas",
+        "city": "Cartagena",
+        "text": "La comunidad se siente activa y cercana. No te dejan solo con dudas, siempre hay alguien que orienta.",
+        "rating": 5
+    },
+    {
+        "name": "Mariana del Pilar Salazar",
+        "city": "Villavicencio",
+        "text": "Participé por primera vez la semana pasada y todo fue fluido. Me quedé porque se nota organización y buena vibra.",
+        "rating": 5
+    },
+    {
+        "name": "José David Quintero",
+        "city": "Santa Marta",
+        "text": "Entré por curiosidad y terminé recomendándolo. El trato es respetuoso y las dinámicas son fáciles de seguir.",
+        "rating": 5
+    }
+]

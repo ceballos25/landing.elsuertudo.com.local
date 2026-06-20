@@ -1,0 +1,22 @@
+[
+    {
+        "value": "100+",
+        "label": "En el grupo",
+        "icon": "bi-people-fill"
+    },
+    {
+        "value": "1",
+        "label": "Dinámica activa",
+        "icon": "bi-lightning-fill"
+    },
+    {
+        "value": "Nueva",
+        "label": "Comunidad en marcha",
+        "icon": "bi-rocket-takeoff-fill"
+    },
+    {
+        "value": "5.0★",
+        "label": "Opiniones recientes",
+        "icon": "bi-star-fill"
+    }
+]

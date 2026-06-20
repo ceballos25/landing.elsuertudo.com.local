@@ -1,0 +1,42 @@
+[
+    {
+        "image": "comprobante-01.png",
+        "name": "Cindy Perez",
+        "amount": "$500.000",
+        "platform": "Nequi",
+        "date": "2026-06-05",
+        "activity": "Bendecida · Pago inmediato"
+    },
+    {
+        "image": "comprobante-02.png",
+        "name": "Harold Gomez",
+        "amount": "$100.000",
+        "platform": "Nequi",
+        "date": "2026-06-04",
+        "activity": "Bendecido · Pago inmediato"
+    },
+    {
+        "image": "comprobante-03.png",
+        "name": "Juan Jimenez",
+        "amount": "$500.000",
+        "platform": "Nequi",
+        "date": "2026-06-02",
+        "activity": "Bendecido · Pago inmediato"
+    },
+    {
+        "image": "comprobante-04.png",
+        "name": "Juan Granadillo",
+        "amount": "$200.000",
+        "platform": "Nequi",
+        "date": "2026-05-31",
+        "activity": "Bendecido · Pago inmediato"
+    },
+    {
+        "image": "comprobante-05.png",
+        "name": "Helena Cecilia Luna Guiot",
+        "amount": "$100.000",
+        "platform": "Bancolombia",
+        "date": "2026-05-27",
+        "activity": "Bendecida · Transferencia"
+    }
+]
