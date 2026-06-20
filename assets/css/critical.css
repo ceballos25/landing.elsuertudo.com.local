@@ -54,8 +54,9 @@ img{max-width:100%;height:auto;display:block}
 .hero-community-text{margin:0 0 1rem;color:#5C6B5C;font-size:.95rem;line-height:1.6}
 .hero-proof-label{font-size:.8rem;font-weight:700;color:#014005;text-transform:uppercase;margin-bottom:.75rem}
 .mobile-cta-bar{position:fixed;bottom:0;left:0;right:0;z-index:1025;padding:.65rem 1rem calc(.65rem + env(safe-area-inset-bottom));background:rgba(255,255,255,.97);border-top:1px solid #C6E8C8}
-.mobile-cta-btn{display:flex;align-items:center;justify-content:center;width:100%;padding:.85rem 1rem;background:#25D366;color:#fff!important;font-weight:700;border-radius:8px}
+.mobile-cta-btn{display:flex;align-items:center;justify-content:center;gap:.55rem;width:100%;padding:.75rem 1rem;background:#25D366;color:#fff!important;font-weight:700;border-radius:8px;line-height:1.2;min-height:48px;border:none;box-shadow:none;overflow:hidden}
+.mobile-cta-btn i{font-size:1.25rem;line-height:1;flex-shrink:0}
 .visually-hidden{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
-@media(max-width:991.98px){body{padding-bottom:calc(76px + env(safe-area-inset-bottom))}}
+@media(max-width:991.98px){body{padding-bottom:calc(68px + env(safe-area-inset-bottom))}}
 @media(max-width:575.98px){.brand-logo img{height:50px;width:140px;max-width:140px;aspect-ratio:140/50}}
 .bi,[class^="bi-"],[class*=" bi-"]{display:inline-block;width:1em;height:1em;line-height:1;vertical-align:-.125em;font-style:normal}
