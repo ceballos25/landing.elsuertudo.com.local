@@ -6,6 +6,7 @@
 
 const SECTION_IDS = ['inicio', 'estadisticas', 'como-funciona', 'testimonios', 'unete'];
 const SCROLL_EXTRA_OFFSET = 16;
+let scrollOffsetCache = 88;
 
 document.addEventListener('DOMContentLoaded', () => {
     document.documentElement.classList.add('js-ready');
@@ -67,6 +68,7 @@ function initHeaderOffset() {
         const height = Math.ceil(navbar.getBoundingClientRect().height);
         document.documentElement.style.setProperty('--navbar-height', `${height}px`);
         document.documentElement.style.setProperty('--header-offset', `${height}px`);
+        refreshScrollOffsetCache();
     };
 
     update();
@@ -80,9 +82,17 @@ function initHeaderOffset() {
 }
 
 /**
- * Offset total para scroll (header + margen)
+ * Offset total para scroll (header + margen) — cacheado para evitar reflows en scroll
  */
+function refreshScrollOffsetCache() {
+    scrollOffsetCache = computeScrollOffset();
+}
+
 function getScrollOffset() {
+    return scrollOffsetCache;
+}
+
+function computeScrollOffset() {
     const navbar = document.getElementById('mainNavbar');
     const navbarHeight = navbar
         ? Math.ceil(navbar.getBoundingClientRect().height)
@@ -103,9 +113,6 @@ function getScrollOffset() {
     return stickyOffset + SCROLL_EXTRA_OFFSET;
 }
 
-/**
- * Desplaza suavemente a un elemento
- */
 function scrollToElement(target, { updateHash = true } = {}) {
     if (!target) return;
 
@@ -323,13 +330,14 @@ function initHorizontalCarousel({
     container.setAttribute('aria-label', `${labelPrefix}s — desliza horizontalmente`);
 
     if (dotsWrap && slides.length > 1) {
+        dotsWrap.setAttribute('role', 'group');
+
         slides.forEach((_, index) => {
             const dot = document.createElement('button');
             dot.type = 'button';
             dot.className = `${dotClass}${index === 0 ? ' is-active' : ''}`;
-            dot.setAttribute('role', 'tab');
             dot.setAttribute('aria-label', `${labelPrefix} ${index + 1} de ${slides.length}`);
-            dot.setAttribute('aria-selected', index === 0 ? 'true' : 'false');
+            dot.setAttribute('aria-current', index === 0 ? 'true' : 'false');
 
             dot.addEventListener('click', () => {
                 slides[index].scrollIntoView({
@@ -370,7 +378,7 @@ function initHorizontalCarousel({
             dotsWrap.querySelectorAll(`.${dotClass}`).forEach((dot, index) => {
                 const isActive = index === activeIndex;
                 dot.classList.toggle('is-active', isActive);
-                dot.setAttribute('aria-selected', isActive ? 'true' : 'false');
+                dot.setAttribute('aria-current', isActive ? 'true' : 'false');
             });
         }
 

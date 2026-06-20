@@ -15,17 +15,20 @@ $whatsapp     = e(config('whatsapp'));
         </div>
 
         <?php if (!empty($comprobantes)): ?>
-        <div class="comprobantes-carousel">
+        <div class="comprobantes-carousel" role="region" aria-roledescription="carrusel" aria-label="Comprobantes verificados">
             <div class="comprobantes-fade comprobantes-fade-left" aria-hidden="true"></div>
-            <div class="comprobantes-scroll" role="list">
+            <div class="comprobantes-scroll">
+                <ul class="comprobantes-track">
                 <?php foreach ($comprobantes as $comp): ?>
-                <article class="comprobante-card comprobante-slide" role="listitem">
+                <li class="comprobante-card comprobante-slide">
                     <div class="comprobante-image-wrap">
                         <img src="<?= e(cdnComprobante($comp['image'] ?? '')) ?>"
                              alt="Comprobante — <?= e($comp['name'] ?? '') ?>"
                              class="comprobante-image"
                              loading="lazy"
-                             decoding="async">
+                             decoding="async"
+                             width="320"
+                             height="240">
                         <span class="comprobante-amount-badge"><?= e($comp['amount'] ?? '') ?></span>
                     </div>
                     <div class="comprobante-info">
@@ -34,12 +37,13 @@ $whatsapp     = e(config('whatsapp'));
                             <?= e($comp['platform'] ?? 'Nequi') ?> · <?= e(formatDate($comp['date'] ?? date('Y-m-d'))) ?>
                         </span>
                     </div>
-                </article>
+                </li>
                 <?php endforeach; ?>
+                </ul>
             </div>
             <div class="comprobantes-fade comprobantes-fade-right" aria-hidden="true"></div>
         </div>
-        <div class="comprobantes-dots d-lg-none" role="tablist" aria-label="Comprobantes"></div>
+        <div class="comprobantes-dots d-lg-none" aria-label="Navegación de comprobantes"></div>
         <p class="comprobantes-hint d-lg-none text-center">
             <i class="bi bi-arrow-left-right"></i> Desliza para ver más
         </p>

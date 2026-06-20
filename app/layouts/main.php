@@ -15,7 +15,8 @@ $description    = e(config('seo.description'));
 $keywords       = e(config('seo.keywords'));
 $ogImageFile    = (string) config('seo.og_image', 'logo.jpg');
 $ogImage        = e(cdnLogo($ogImageFile));
-$logoUrl        = e(cdnLogo((string) config('logo', 'logo.jpg')));
+$logoNavUrl     = e(cdnLogoNav());
+$faviconUrl     = e(asset('assets/img/favicon.svg'));
 $ogImageAlt     = e(config('seo.og_image_alt', 'El Suertudo — Comunidad oficial en Colombia'));
 $ogImageWidth   = (int) config('seo.og_image_width', 1200);
 $ogImageHeight  = (int) config('seo.og_image_height', 1200);
@@ -70,9 +71,6 @@ $gaId           = str_starts_with($gaId, 'G-') && !str_contains($gaId, 'XXXX') ?
     <meta name="twitter:image:alt" content="<?= $ogImageAlt ?>">
 
     <!-- Schema.org / compatibilidad adicional -->
-    <meta itemprop="name" content="<?= $pageTitleSafe ?>">
-    <meta itemprop="description" content="<?= $description ?>">
-    <meta itemprop="image" content="<?= $ogImage ?>">
     <link rel="image_src" href="<?= $ogImage ?>">
 
     <?php if ($socialFacebook !== '' && $socialFacebook !== '#'): ?>
@@ -83,9 +81,8 @@ $gaId           = str_starts_with($gaId, 'G-') && !str_contains($gaId, 'XXXX') ?
     <?php endif; ?>
 
     <!-- Favicon e iconos -->
-    <link rel="icon" type="<?= $ogImageType ?>" href="<?= $logoUrl ?>">
+    <link rel="icon" type="image/svg+xml" href="<?= $faviconUrl ?>">
     <link rel="apple-touch-icon" sizes="180x180" href="<?= $ogImage ?>">
-    <link rel="apple-touch-icon" href="<?= $ogImage ?>">
 
     <!-- Preconnect / DNS prefetch -->
     <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
@@ -93,12 +90,12 @@ $gaId           = str_starts_with($gaId, 'G-') && !str_contains($gaId, 'XXXX') ?
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <!-- LCP: logo del navbar -->
-    <link rel="preload" as="image" href="<?= $logoUrl ?>" fetchpriority="high">
+    <!-- LCP: logo optimizado para navbar (~5–15 KiB) -->
+    <link rel="preload" as="image" href="<?= $logoNavUrl ?>" type="image/webp" fetchpriority="high">
 
     <!-- CSS crítico de layout (Bootstrap grid + componentes) -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="<?= asset('assets/css/main.css?v=11') ?>">
+    <link rel="stylesheet" href="<?= asset('assets/css/main.css?v=12') ?>">
 
     <!-- CSS no crítico (no bloquea el primer render) -->
     <?php asyncStylesheet('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap'); ?>
@@ -166,6 +163,6 @@ $gaId           = str_starts_with($gaId, 'G-') && !str_contains($gaId, 'XXXX') ?
     <?php component('whatsapp-float'); ?>
 
     <!-- Custom JS (sin Bootstrap bundle — menú en vanilla) -->
-    <script src="<?= asset('assets/js/main.js?v=9') ?>" defer></script>
+    <script src="<?= asset('assets/js/main.js?v=10') ?>" defer></script>
 </body>
 </html>

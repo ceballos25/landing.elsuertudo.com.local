@@ -128,6 +128,11 @@ function cdnLogo(string $path): string
     return cdnAsset('logos', $path);
 }
 
+function cdnLogoNav(): string
+{
+    return cdnLogo((string) config('logo_nav', 'logo-nav.webp'));
+}
+
 function cdnComprobante(string $path): string
 {
     return cdnAsset('comprobantes', $path);

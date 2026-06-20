@@ -4,10 +4,21 @@
  *
  * @var string $size Tamaño: sm | md | lg
  */
-$size    = $size ?? 'md';
-$asNav   = $asNav ?? false;
-$brand   = e(config('brand'));
-$logo    = e(cdnLogo((string) config('logo', 'logo.jpg')));
+$size       = $size ?? 'md';
+$asNav      = $asNav ?? false;
+$brand      = e(config('brand'));
+$logoNav    = e(cdnLogoNav());
+$logoFallback = e(cdnLogo((string) config('logo', 'logo.jpg')));
+$imgWidth   = match ($size) {
+    'sm'    => 130,
+    'lg'    => 200,
+    default => 160,
+};
+$imgHeight  = match ($size) {
+    'sm'    => 46,
+    'lg'    => 80,
+    default => 58,
+};
 $classes = match ($size) {
     'sm'    => 'brand-logo brand-logo-sm',
     'lg'    => 'brand-logo brand-logo-lg',
@@ -16,8 +27,18 @@ $classes = match ($size) {
 if ($asNav) {
     $classes .= ' navbar-brand';
 }
+$fetchPriority = $asNav ? 'high' : 'auto';
+$loading       = $asNav ? 'eager' : 'lazy';
 ?>
 <a href="#inicio" class="<?= $classes ?>" aria-label="<?= $brand ?> — Inicio">
-    <img src="<?= $logo ?>" alt="<?= $brand ?>" width="160" height="58"
-         fetchpriority="high" decoding="async" loading="eager">
+    <picture>
+        <source srcset="<?= $logoNav ?>" type="image/webp">
+        <img src="<?= $logoFallback ?>"
+             alt="<?= $brand ?>"
+             width="<?= $imgWidth ?>"
+             height="<?= $imgHeight ?>"
+             fetchpriority="<?= $fetchPriority ?>"
+             decoding="async"
+             loading="<?= $loading ?>">
+    </picture>
 </a>

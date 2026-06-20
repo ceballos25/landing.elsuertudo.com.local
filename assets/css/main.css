@@ -14,7 +14,7 @@
     --color-gold-light: #F2E205;
     --color-dark: #014005;
     --color-text: #1A2E1A;
-    --color-muted: #5C6B5C;
+    --color-muted: #3D523D;
     --color-white: #FFFFFF;
     --color-surface: #FFFFFF;
     --color-surface-alt: #F5FFF6;
@@ -75,7 +75,7 @@
 }
 
 /* --- Promo Bar --- */
-.promo-bar-text i { color: var(--color-gold-light); margin-right: 0.35rem; }
+.promo-bar-text i { color: var(--color-white); opacity: 0.92; margin-right: 0.35rem; }
 
 .promo-bar-inner {
     display: flex;
@@ -346,7 +346,7 @@ a {
     border-radius: var(--radius-lg);
     font-size: 1rem;
     margin-bottom: 1.5rem;
-    animation: pulse-whatsapp 2.5s ease-in-out infinite;
+    position: relative;
 }
 
 .btn-hero-cta i { font-size: 2rem; }
@@ -777,9 +777,16 @@ a {
 }
 
 .comprobantes-scroll {
+    overflow: visible;
+}
+
+.comprobantes-track {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap: 1rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
 .comprobantes-hint {
@@ -979,17 +986,23 @@ a {
 }
 
 .testimonials-scroll {
-    display: flex;
     overflow-x: auto;
     overflow-y: hidden;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
     overscroll-behavior-x: contain;
     touch-action: pan-x pan-y;
-    gap: 1rem;
     padding: 0.25rem calc((100% - min(88vw, 340px)) / 2) 1rem;
     scroll-padding-inline: calc((100% - min(88vw, 340px)) / 2);
     scrollbar-width: none;
+}
+
+.testimonials-track {
+    display: flex;
+    gap: 1rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
 .testimonials-scroll::-webkit-scrollbar { display: none; }
@@ -1008,17 +1021,31 @@ a {
 }
 
 .testimonials-dot {
-    width: 8px;
-    height: 8px;
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    min-height: 44px;
     padding: 0;
     border: none;
     border-radius: 50%;
-    background: var(--color-border);
+    background: transparent;
     cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background var(--transition);
+}
+
+.testimonials-dot::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--color-border);
     transition: transform var(--transition), background var(--transition);
 }
 
-.testimonials-dot.is-active {
+.testimonials-dot.is-active::before {
     background: var(--color-primary);
     transform: scale(1.15);
 }
@@ -1210,7 +1237,6 @@ a {
     border-radius: var(--radius-lg);
     font-size: 1rem;
     position: relative;
-    animation: pulse-whatsapp 2.5s ease-in-out infinite;
 }
 
 .btn-cta-large i { font-size: 2rem; }
@@ -1225,9 +1251,38 @@ a {
 .btn-cta-large strong { font-size: 1.15rem; }
 .btn-cta-large small { font-size: 0.8rem; opacity: 0.85; font-weight: 400; }
 
-@keyframes pulse-whatsapp {
-    0%, 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.4); }
-    50% { box-shadow: 0 0 0 12px rgba(37, 211, 102, 0); }
+.btn-hero-cta::after,
+.btn-cta-large::after,
+.whatsapp-float::after,
+.mobile-cta-btn::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    border: 2px solid rgba(37, 211, 102, 0.45);
+    animation: pulse-ring 2.5s ease-out infinite;
+    pointer-events: none;
+    will-change: transform, opacity;
+}
+
+.whatsapp-float::after {
+    border-radius: 50%;
+    inset: -2px;
+}
+
+@keyframes pulse-ring {
+    0% { transform: scale(1); opacity: 0.55; }
+    100% { transform: scale(1.12); opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .btn-hero-cta::after,
+    .btn-cta-large::after,
+    .whatsapp-float::after,
+    .mobile-cta-btn::after {
+        animation: none;
+        opacity: 0;
+    }
 }
 
 .cta-disclaimer {
@@ -1288,8 +1343,10 @@ a {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 40px;
-    height: 40px;
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    min-height: 44px;
     background: var(--color-white);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-sm);
@@ -1364,7 +1421,6 @@ a {
     box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
     z-index: 1020;
     transition: transform var(--transition), box-shadow var(--transition);
-    animation: pulse-whatsapp 2.5s ease-in-out infinite;
 }
 
 .whatsapp-float:hover {
@@ -1440,7 +1496,7 @@ a {
     font-weight: 700;
     font-size: 0.95rem;
     border-radius: var(--radius-md);
-    animation: pulse-whatsapp 2.5s ease-in-out infinite;
+    position: relative;
 }
 
 .mobile-cta-btn i { font-size: 1.35rem; }
@@ -1658,17 +1714,20 @@ a {
     }
 
     .comprobantes-scroll {
-        display: flex;
         overflow-x: auto;
         overflow-y: hidden;
         scroll-snap-type: x mandatory;
         -webkit-overflow-scrolling: touch;
         overscroll-behavior-x: contain;
         touch-action: pan-x pan-y;
-        gap: 0.85rem;
         padding: 0.25rem calc((100% - min(82vw, 300px)) / 2) 1rem;
         scroll-padding-inline: calc((100% - min(82vw, 300px)) / 2);
         scrollbar-width: none;
+    }
+
+    .comprobantes-track {
+        display: flex;
+        gap: 0.85rem;
     }
 
     .comprobantes-scroll::-webkit-scrollbar { display: none; }
@@ -1687,17 +1746,31 @@ a {
     }
 
     .comprobantes-dot {
+        width: 44px;
+        height: 44px;
+        min-width: 44px;
+        min-height: 44px;
+        border-radius: 50%;
+        background: transparent;
+        border: none;
+        padding: 0;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        transition: background 0.2s ease;
+    }
+
+    .comprobantes-dot::before {
+        content: '';
         width: 8px;
         height: 8px;
         border-radius: 50%;
         background: var(--color-border);
-        border: none;
-        padding: 0;
-        cursor: pointer;
         transition: background 0.2s ease, transform 0.2s ease;
     }
 
-    .comprobantes-dot.is-active {
+    .comprobantes-dot.is-active::before {
         background: var(--color-primary);
         transform: scale(1.25);
     }

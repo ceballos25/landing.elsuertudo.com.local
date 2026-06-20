@@ -11,8 +11,9 @@ $stats = $stats ?? [
     ['value' => '5.0★',  'label' => 'Opiniones recientes'],
 ];
 ?>
-<section class="stats-section section-block" id="estadisticas" aria-label="Estadísticas">
+<section class="stats-section section-block" id="estadisticas" aria-labelledby="stats-heading">
     <div class="container">
+        <h2 id="stats-heading" class="visually-hidden">Nuestra comunidad en números</h2>
         <div class="row g-3 stats-grid">
             <?php foreach ($stats as $index => $stat): ?>
             <div class="col-6 col-lg-3">

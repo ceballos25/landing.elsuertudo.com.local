@@ -26,7 +26,7 @@ $year    = date('Y');
             </div>
 
             <div class="col-6 col-lg-2">
-                <h4 class="footer-heading">Navegación</h4>
+                <h2 class="footer-heading">Navegación</h2>
                 <ul class="footer-links">
                     <li><a href="#inicio">Inicio</a></li>
                     <li><a href="#como-funciona">Cómo funciona</a></li>
@@ -35,7 +35,7 @@ $year    = date('Y');
             </div>
 
             <div class="col-6 col-lg-3">
-                <h4 class="footer-heading">Contacto</h4>
+                <h2 class="footer-heading">Contacto</h2>
                 <ul class="footer-contact">
                     <li>
                         <a href="tel:+<?= e($phoneTel) ?>">
@@ -59,7 +59,7 @@ $year    = date('Y');
             </div>
 
             <div class="col-lg-3">
-                <h4 class="footer-heading">Síguenos</h4>
+                <h2 class="footer-heading">Síguenos</h2>
                 <div class="footer-social">
                     <?php if (!empty($social['facebook']) && $social['facebook'] !== '#' && $social['facebook'] !== ''): ?>
                     <a href="<?= e($social['facebook']) ?>" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
