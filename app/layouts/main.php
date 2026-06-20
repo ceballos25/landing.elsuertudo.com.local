@@ -9,11 +9,20 @@
 $primaryColor   = e(config('colors.primary'));
 $secondaryColor = e(config('colors.secondary'));
 $brandName      = e(config('brand'));
-$appUrl         = e(config('url'));
+$appUrl         = e(rtrim((string) config('url'), '/'));
+$pageTitleSafe  = e($pageTitle ?? config('brand'));
 $description    = e(config('seo.description'));
 $keywords       = e(config('seo.keywords'));
-$ogImage        = e(cdnLogo((string) config('seo.og_image', 'logo.jpg')));
+$ogImageFile    = (string) config('seo.og_image', 'logo.jpg');
+$ogImage        = e(cdnLogo($ogImageFile));
+$logoUrl        = e(cdnLogo((string) config('logo', 'logo.jpg')));
+$ogImageAlt     = e(config('seo.og_image_alt', 'El Suertudo — Comunidad oficial en Colombia'));
+$ogImageWidth   = (int) config('seo.og_image_width', 1200);
+$ogImageHeight  = (int) config('seo.og_image_height', 1200);
+$ogImageType    = e(imageMimeType($ogImageFile));
 $whatsappUrl    = e(config('whatsapp'));
+$socialFacebook = trim((string) config('social.facebook', ''));
+$socialInstagram = trim((string) config('social.instagram', ''));
 $pixelId        = preg_replace('/\D/', '', (string) config('analytics.meta_pixel', ''));
 $gaId           = trim((string) config('analytics.google', ''));
 $gaId           = str_starts_with($gaId, 'G-') && !str_contains($gaId, 'XXXX') ? $gaId : '';
@@ -26,40 +35,63 @@ $gaId           = str_starts_with($gaId, 'G-') && !str_contains($gaId, 'XXXX') ?
     <meta name="theme-color" content="<?= $primaryColor ?>">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="<?= $brandName ?>">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <!-- SEO Meta Tags -->
-    <title><?= e($pageTitle ?? $brandName) ?></title>
+    <!-- SEO básico -->
+    <title><?= $pageTitleSafe ?></title>
     <meta name="description" content="<?= $description ?>">
     <meta name="keywords" content="<?= $keywords ?>">
     <meta name="author" content="<?= $brandName ?>">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="<?= $appUrl ?>">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta name="googlebot" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="<?= $appUrl ?>/">
 
-    <!-- Open Graph -->
+    <!-- Open Graph — WhatsApp, Facebook, LinkedIn, etc. -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="<?= $appUrl ?>">
-    <meta property="og:title" content="<?= e($pageTitle ?? $brandName) ?>">
+    <meta property="og:url" content="<?= $appUrl ?>/">
+    <meta property="og:title" content="<?= $pageTitleSafe ?>">
     <meta property="og:description" content="<?= $description ?>">
-    <meta property="og:image" content="<?= $ogImage ?>">
-    <meta property="og:locale" content="es_CO">
     <meta property="og:site_name" content="<?= $brandName ?>">
+    <meta property="og:locale" content="es_CO">
+    <meta property="og:locale:alternate" content="es_ES">
+    <meta property="og:image" content="<?= $ogImage ?>">
+    <meta property="og:image:secure_url" content="<?= $ogImage ?>">
+    <meta property="og:image:type" content="<?= $ogImageType ?>">
+    <meta property="og:image:width" content="<?= $ogImageWidth ?>">
+    <meta property="og:image:height" content="<?= $ogImageHeight ?>">
+    <meta property="og:image:alt" content="<?= $ogImageAlt ?>">
 
-    <!-- Twitter Cards -->
+    <!-- Twitter / X Cards -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="<?= e($pageTitle ?? $brandName) ?>">
+    <meta name="twitter:title" content="<?= $pageTitleSafe ?>">
     <meta name="twitter:description" content="<?= $description ?>">
     <meta name="twitter:image" content="<?= $ogImage ?>">
+    <meta name="twitter:image:alt" content="<?= $ogImageAlt ?>">
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/jpeg" href="<?= e(cdnLogo((string) config('logo', 'logo.jpg'))) ?>">
-    <link rel="apple-touch-icon" href="<?= e(cdnLogo((string) config('logo', 'logo.jpg'))) ?>">
+    <!-- Schema.org / compatibilidad adicional -->
+    <meta itemprop="name" content="<?= $pageTitleSafe ?>">
+    <meta itemprop="description" content="<?= $description ?>">
+    <meta itemprop="image" content="<?= $ogImage ?>">
+    <link rel="image_src" href="<?= $ogImage ?>">
+
+    <?php if ($socialFacebook !== '' && $socialFacebook !== '#'): ?>
+    <meta property="og:see_also" content="<?= e($socialFacebook) ?>">
+    <?php endif; ?>
+    <?php if ($socialInstagram !== '' && $socialInstagram !== '#'): ?>
+    <meta property="og:see_also" content="<?= e($socialInstagram) ?>">
+    <?php endif; ?>
+
+    <!-- Favicon e iconos -->
+    <link rel="icon" type="<?= $ogImageType ?>" href="<?= $logoUrl ?>">
+    <link rel="apple-touch-icon" sizes="180x180" href="<?= $ogImage ?>">
+    <link rel="apple-touch-icon" href="<?= $ogImage ?>">
 
     <!-- Preconnect -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <!-- Google Fonts — Montserrat (misma familia que apfenix.com) -->
+    <!-- Google Fonts — Montserrat -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <!-- Bootstrap 5 CSS -->

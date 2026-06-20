@@ -134,6 +134,20 @@ function cdnComprobante(string $path): string
 }
 
 /**
+ * MIME type para meta og:image:type según extensión del archivo
+ */
+function imageMimeType(string $filename): string
+{
+    return match (strtolower(pathinfo($filename, PATHINFO_EXTENSION))) {
+        'png'  => 'image/png',
+        'webp' => 'image/webp',
+        'gif'  => 'image/gif',
+        'svg'  => 'image/svg+xml',
+        default => 'image/jpeg',
+    };
+}
+
+/**
  * Incluye un componente reutilizable
  */
 function component(string $name, array $data = []): void

@@ -171,6 +171,10 @@ Abrir el dominio en el navegador. Todos los assets deben cargar por HTTPS sin er
 | `DARK_COLOR` | Color oscuro auxiliar (`#014005`) |
 | `META_PIXEL_ID` | ID de Meta Pixel (opcional) |
 | `GOOGLE_ANALYTICS_ID` | ID de Google Analytics (opcional) |
+| `OG_IMAGE` | Imagen para previsualización de enlaces (`logo.jpg` en CDN) |
+| `OG_IMAGE_ALT` | Texto alternativo de la imagen OG |
+| `OG_IMAGE_WIDTH` | Ancho de la imagen OG en píxeles (default `1200`) |
+| `OG_IMAGE_HEIGHT` | Alto de la imagen OG en píxeles (default `1200`) |
 | `META_DESCRIPTION` | Meta descripción SEO |
 | `META_KEYWORDS` | Palabras clave SEO |
 | `CONTACT_EMAIL` | Correo de contacto |

@@ -32,9 +32,12 @@ return [
         'google'     => env('GOOGLE_ANALYTICS_ID', ''),
     ],
     'seo'         => [
-        'description' => env('META_DESCRIPTION', 'Únete a la comunidad El Suertudo en Colombia.'),
-        'keywords'    => env('META_KEYWORDS', 'comunidad,participaciones,dinámicas,Colombia,El Suertudo,bendecidos'),
-        'og_image'    => env('OG_IMAGE', 'logo.jpg'),
+        'description'   => env('META_DESCRIPTION', 'Únete a la comunidad El Suertudo en Colombia.'),
+        'keywords'      => env('META_KEYWORDS', 'comunidad,participaciones,dinámicas,Colombia,El Suertudo,bendecidos'),
+        'og_image'      => env('OG_IMAGE', 'logo.jpg'),
+        'og_image_alt'  => env('OG_IMAGE_ALT', 'El Suertudo — Comunidad oficial en Colombia'),
+        'og_image_width'  => (int) env('OG_IMAGE_WIDTH', 1200),
+        'og_image_height' => (int) env('OG_IMAGE_HEIGHT', 1200),
     ],
     'contact'     => [
         'email'   => env('CONTACT_EMAIL', 'info@elsuertudo.com.co'),
